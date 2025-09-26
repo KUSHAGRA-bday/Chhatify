@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getStreamToken } from "../lib/api";
 import toast from "react-hot-toast";
 import CallButton from "../components/CallButton";
+import EditGroupModal from "../components/EditGroupModal.jsx";
 import {
   Channel,
   ChannelHeader,
@@ -20,6 +21,7 @@ import ChatLoader from "../components/ChatLoader";
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const ChatPage = () => {
+  const [showEditGroup, setShowEditGroup] = useState(false);
   const { id, group } = useParams(); // id: userId or channelId, group: "group" if group chat
   const [chatClient, setChatClient] = useState(null);
   const [channel, setChannel] = useState(null);
@@ -92,6 +94,21 @@ const ChatPage = () => {
             <CallButton handleVideoCall={handleVideoCall} />
             <Window>
               <ChannelHeader />
+              {group && (
+                <button
+                  className="btn btn-sm btn-accent absolute top-4 right-4"
+                  onClick={() => setShowEditGroup(true)}
+                >
+                  Edit Group
+                </button>
+              )}
+              <EditGroupModal
+                open={showEditGroup}
+                onClose={() => setShowEditGroup(false)}
+                channel={channel}
+                authUser={authUser}
+              />
+
               <MessageList />
               <MessageInput focus />
             </Window>
