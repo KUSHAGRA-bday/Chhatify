@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getUserFriends } from "../lib/api";
 import toast from "react-hot-toast";
-import { LoaderIcon } from "lucide-react";
+import { Edit3Icon, LoaderIcon } from "lucide-react";
 
 const EditGroupModal = ({ open, onClose, channel }) => {
   const { data: friends = [], isLoading } = useQuery({
@@ -43,12 +43,12 @@ const EditGroupModal = ({ open, onClose, channel }) => {
 
   if (!open) return null;
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-base-200 bg-opacity-40 flex items-center justify-center z-50 text-primary">
       <div className="bg-base-200 rounded-lg p-6 w-full max-w-md shadow-lg relative">
         <button className="absolute top-4 right-6 text-xl" onClick={onClose}>
           ✕
         </button>
-        <h2 className="text-lg font-bold mb-4">Edit Group</h2>
+        <h2 className="text-lg font-bold mb-4 text-primary"><Edit3Icon className="size-6 btn"/></h2>
         <input
           type="text"
           className="input input-bordered w-full mb-4"
