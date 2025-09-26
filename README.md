@@ -57,7 +57,9 @@ JWT_SECRET=your_jwt_secret
 npm run dev
 ```
 
-Your app will be live at [http://localhost:5173](http://localhost:5173).
+Your app will be live at [http://localhost:5173](http://localhost:5173) or [http://localhost:5001](http://localhost:5001).
+
+Check your terminal before opening the local host
 
 ---
 
