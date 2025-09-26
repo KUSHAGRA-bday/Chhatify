@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Edit3Icon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
@@ -91,17 +91,22 @@ const ChatPage = () => {
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full relative">
-            <CallButton handleVideoCall={handleVideoCall} />
             <Window>
-              <ChannelHeader />
-              {group && (
-                <button
-                  className="btn btn-sm btn-accent absolute top-4 right-4"
-                  onClick={() => setShowEditGroup(true)}
-                >
-                  Edit Group
-                </button>
-              )}
+              <div className="flex items-center justify-between px-4 py-2 relative">
+                <ChannelHeader />
+                <div className="flex gap-2 absolute right-4 top-4 sm:static sm:gap-4">
+                  {group && (
+                    <button
+                      className="btn btn-sm btn-accent"
+                      onClick={() => setShowEditGroup(true)}
+                    >
+                      Edit Group
+                    </button>
+                  )}
+                  <CallButton handleVideoCall={handleVideoCall} />
+                </div>
+              </div>
+
               <EditGroupModal
                 open={showEditGroup}
                 onClose={() => setShowEditGroup(false)}

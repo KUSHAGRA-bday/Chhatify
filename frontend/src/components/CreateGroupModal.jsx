@@ -44,6 +44,7 @@ const CreateGroupModal = ({ open, onClose }) => {
       const channel = client.channel("messaging", {
         name: groupName,
         members,
+        distinct: false,
       });
       await channel.create();
       toast.success("Group created!");
@@ -51,6 +52,7 @@ const CreateGroupModal = ({ open, onClose }) => {
       // Optionally, redirect to group chat here
       // navigate(`/chat/group/${channel.id}`);
     } catch (err) {
+      console.log(err)
       toast.error("Failed to create group");
     } finally {
       setLoading(false);
