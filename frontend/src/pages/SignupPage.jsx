@@ -24,11 +24,6 @@ const SignupPage = () => {
       <div className="w-auto h-80vh rounded-2xl bg-slate-900">
         <div className="flex flex-col gap-2 p-8">
           <p className="flex justify-center text-3xl text-gray-300 tracking-wider font-bold mb-1">
-            <img
-              src="/chhatify clone.png"
-              alt=""
-              className="size-11 rounded-lg mr-3"
-            />
             Welcome to Chhatify!!
           </p>
           <p className="text-center text-gray-300 mb-3">Create your account</p>
