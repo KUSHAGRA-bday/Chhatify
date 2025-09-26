@@ -26,7 +26,7 @@ const LoginPage = () => {
           <div>
             <h1 className="flex justify-center text-3xl text-gray-300 tracking-wider font-bold mb-1">
               <img
-                src="public/chhatify clone.png"
+                src="/chhatify clone.png"
                 alt=""
                 className="size-11 mr-3 rounded-lg"
               />

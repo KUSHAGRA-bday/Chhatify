@@ -25,7 +25,7 @@ const SignupPage = () => {
         <div className="flex flex-col gap-2 p-8">
           <p className="flex justify-center text-3xl text-gray-300 tracking-wider font-bold mb-1">
             <img
-              src="public/chhatify clone.png"
+              src="/chhatify clone.png"
               alt=""
               className="size-11 rounded-lg mr-3"
             />
