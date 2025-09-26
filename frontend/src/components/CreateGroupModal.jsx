@@ -40,19 +40,18 @@ const CreateGroupModal = ({ open, onClose }) => {
         },
         tokenData.token
       );
-      const members = [authUser._id, ...selected];
-      const channel = client.channel("messaging", {
+      const uniqueId = `grp-${Date.now()}`;
+      const channel = client.channel("messaging", uniqueId, {
         name: groupName,
-        members,
-        distinct: false,
+        created_by_id: authUser._id,
       });
       await channel.create();
+      await channel.addMembers([authUser._id, ...selected]); 
+
       toast.success("Group created!");
       onClose();
-      // Optionally, redirect to group chat here
-      // navigate(`/chat/group/${channel.id}`);
     } catch (err) {
-      console.log(err)
+      console.log(err);
       toast.error("Failed to create group");
     } finally {
       setLoading(false);
@@ -63,7 +62,9 @@ const CreateGroupModal = ({ open, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
       <div className="bg-base-200 rounded-lg p-6 w-full max-w-md shadow-lg relative">
-        <button className="absolute top-4 right-6 text-xl" onClick={onClose}>✕</button>
+        <button className="absolute top-4 right-6 text-xl" onClick={onClose}>
+          ✕
+        </button>
         <h2 className="text-lg font-bold mb-4">Create Group Chat</h2>
         <input
           type="text"
@@ -91,7 +92,11 @@ const CreateGroupModal = ({ open, onClose }) => {
                       );
                     }}
                   />
-                  <img src={user.profilePic} alt={user.fullName} className="size-6 rounded-full" />
+                  <img
+                    src={user.profilePic}
+                    alt={user.fullName}
+                    className="size-6 rounded-full"
+                  />
                   <span>{user.fullName}</span>
                 </label>
               ))}

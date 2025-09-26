@@ -14,7 +14,6 @@ const EditGroupModal = ({ open, onClose, channel }) => {
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Only show friends not already in the group
   const groupMemberIds = Object.keys(channel.state.members || {});
   const availableFriends = friends.filter(
     (f) => !groupMemberIds.includes(f._id)
@@ -23,14 +22,15 @@ const EditGroupModal = ({ open, onClose, channel }) => {
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      // Update group name
+      // ✅ Update group name if changed
       if (groupName && groupName !== channel.data.name) {
         await channel.update({ name: groupName });
       }
-      // Add new members
+      // ✅ Add only brand-new members
       if (selected.length > 0) {
         await channel.addMembers(selected);
       }
+
       toast.success("Group updated!");
       onClose();
     } catch (error) {
@@ -42,13 +42,16 @@ const EditGroupModal = ({ open, onClose, channel }) => {
   };
 
   if (!open) return null;
+
   return (
     <div className="fixed inset-0 bg-base-200 bg-opacity-40 flex items-center justify-center z-50 text-primary">
       <div className="bg-base-200 rounded-lg p-6 w-full max-w-md shadow-lg relative">
         <button className="absolute top-4 right-6 text-xl" onClick={onClose}>
           ✕
         </button>
-        <h2 className="text-lg font-bold mb-4 text-primary"><Edit3Icon className="size-6 btn"/></h2>
+        <h2 className="text-lg font-bold mb-4 text-primary">
+          <Edit3Icon className="size-6" /> Edit Group
+        </h2>
         <input
           type="text"
           className="input input-bordered w-full mb-4"
@@ -70,13 +73,13 @@ const EditGroupModal = ({ open, onClose, channel }) => {
                   <input
                     type="checkbox"
                     checked={selected.includes(user._id)}
-                    onChange={() => {
+                    onChange={() =>
                       setSelected((prev) =>
                         prev.includes(user._id)
                           ? prev.filter((id) => id !== user._id)
                           : [...prev, user._id]
-                      );
-                    }}
+                      )
+                    }
                   />
                   <img
                     src={user.profilePic}
