@@ -32,7 +32,7 @@ Welcome to **ChatConnect**, a **production-ready**, MERN stack web application t
 1. **Clone the repo:**
 
 ```bash
-git clone https://github.com/your-username/chatconnect.git
+git clone https://github.com/KUSHAGRA-bday/chatconnect.git
 cd chatconnect
 ```
 
@@ -57,13 +57,13 @@ JWT_SECRET=your_jwt_secret
 npm run dev
 ```
 
-Your app will be live at [http://localhost:3000](http://localhost:3000).
+Your app will be live at [http://localhost:5173](http://localhost:5173).
 
 ---
 
 ## 🎨 UI Preview
 
-*(Include screenshots or GIFs of your chat interface, video calling screen, and mobile responsiveness.)*
+https://chhatify.onrender.com/
 
 ---
 
@@ -80,8 +80,3 @@ Your app will be live at [http://localhost:3000](http://localhost:3000).
 
 Contributions are welcome! If you want to improve ChatConnect, feel free to open an issue or submit a pull request.
 
----
-
-## 📜 License
-
-MIT License © [Your Name]
