@@ -32,7 +32,7 @@ Welcome to **ChatConnect**, a **production-ready**, MERN stack web application t
 1. **Clone the repo:**
 
 ```bash
-git clone https://github.com/KUSHAGRA-bday/chatconnect.git
+git clone https://github.com/KUSHAGRA-bday/chhatify.git
 cd chatconnect
 ```
 
