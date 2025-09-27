@@ -85,7 +85,6 @@ export async function sendFriendRequest(req, res) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
-
 export async function getFriendRequests(req, res) {
     try {
         const incomingReqs = await FriendRequest.find({
@@ -103,7 +102,7 @@ export async function getFriendRequests(req, res) {
         console.error("Error fetching friend requests:", error.message);
         res.status(500).json({ message: "Internal server error" });
     }
-} 
+}
 export async function acceptFriendRequest(req, res) {
     try {
         const { id: requestId } = req.params;
@@ -177,12 +176,42 @@ export async function updateProfile(req, res) {
     try {
         const userId = req.user._id;
         const updateFields = { ...req.body };
-        const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true });
+
+        // Always fetch the current user to have a baseline
+        const currentUser = await User.findById(userId).select("nativeLanguage learningLanguage");
+
+        // Compute what the final values will be after update
+        const finalNative = updateFields.hasOwnProperty("nativeLanguage")
+            ? updateFields.nativeLanguage
+            : currentUser.nativeLanguage;
+
+        const finalLearning = updateFields.hasOwnProperty("learningLanguage")
+            ? updateFields.learningLanguage
+            : currentUser.learningLanguage;
+
+        if (finalNative && finalLearning && finalNative === finalLearning) {
+            return res.status(400).json({
+                success: false,
+                message: "Native language and learning language cannot be the same."
+            });
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            updateFields,
+            { new: true }
+        );
+
         res.status(200).json({ success: true, user: updatedUser });
     } catch (error) {
-        res.status(500).json({ success: false, message: "Failed to update profile" });
+        console.error("Error updating profile:", error.message);
+        res.status(500).json({
+            success: false,
+            message: "Failed to update profile"
+        });
     }
 }
+
 export async function searchUsers(req, res) {
     try {
         const { q } = req.query;

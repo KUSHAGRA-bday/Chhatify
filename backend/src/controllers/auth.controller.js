@@ -123,6 +123,7 @@ export async function onboard(req, res) {
                     ].filter(Boolean)
                 });
         }
+        if (nativeLanguage === learningLanguage) return res.status(400).json({ success: false, message: "native and learning language should be different" })
         const updatedUser = await User.findByIdAndUpdate(userID, {
             ...req.body, isOnboarded: true
         }, { new: true });
