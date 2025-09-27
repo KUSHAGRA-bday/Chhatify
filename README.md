@@ -1,6 +1,6 @@
-# 🚀 ChatConnect – Real-Time Chat & Video Calling Web App
+# 🚀 Chhatify – Real-Time Chat & Video Calling Web App
 
-Welcome to **ChatConnect**, a **production-ready**, MERN stack web application that brings people together through **real-time chat and seamless video calling**. Built for speed, scalability, and modern web experiences, this app is perfect for communities, teams, or just hanging out with friends.
+Welcome to **Chhatify**, a **production-ready**, MERN stack web application that brings people together through **real-time chat and seamless video calling**. Built for speed, scalability, and modern web experiences, this app is perfect for communities, teams, or just hanging out with friends.
 
 ---
 
