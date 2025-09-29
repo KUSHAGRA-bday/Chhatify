@@ -69,9 +69,6 @@ https://chhatify.onrender.com/
 
 ---
 
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! If you want to improve ChatConnect, feel free to open an issue or submit a pull request.
