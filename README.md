@@ -69,12 +69,6 @@ https://chhatify.onrender.com/
 
 ---
 
-## 🌐 Future Improvements
-
-* Screen sharing during video calls
-* Push notifications
-* Enhanced moderation and reporting tools
-* AI-based smart replies
 
 ---
 
