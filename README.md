@@ -33,7 +33,7 @@ Welcome to **Chhatify**, a **production-ready**, MERN stack web application that
 
 ```bash
 git clone https://github.com/KUSHAGRA-bday/chhatify.git
-cd chatconnect
+cd chhatify
 ```
 
 2. **Install dependencies:**
